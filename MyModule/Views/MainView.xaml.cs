@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Prism.Regions;
+using MyModule.Views;
 
 namespace MyModule.Views
 {
@@ -20,9 +22,16 @@ namespace MyModule.Views
     /// </summary>
     public partial class MainView : UserControl
     {
-        public MainView()
+        private readonly IRegionManager _regionManager;
+
+        public MainView(IRegionManager regionManager)
         {
             InitializeComponent();
+
+            _regionManager = regionManager;
+            _regionManager.RegisterViewWithRegion<SubAView>("SecondaryRegion");
+
+
         }
     }
 }

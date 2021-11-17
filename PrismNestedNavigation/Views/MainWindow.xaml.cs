@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Prism.Regions;
+using Prism.Services;
+using PrismNestedNavigation.ViewModels;
+using MyModule.Views;
 
 namespace PrismNestedNavigation.Views
 {
@@ -20,9 +24,14 @@ namespace PrismNestedNavigation.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IRegionManager _regionManager;
+
+        public MainWindow(IRegionManager regionManager)
         {
             InitializeComponent();
+
+            _regionManager = regionManager;
+            _regionManager.RegisterViewWithRegion<MainView>("ContentRegion");
         }
     }
 }
